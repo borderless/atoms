@@ -1,0 +1,102 @@
+{
+  "name": "@borderlesslabs/atoms",
+  "version": "0.0.0",
+  "description": "Atomic CSS objects for JavaScript",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist.es2015/index.js",
+  "jsnext:main": "dist.es2015/index.js",
+  "sideEffects": false,
+  "files": [
+    "dist/",
+    "dist.es2015/"
+  ],
+  "scripts": {
+    "prettier": "prettier --write",
+    "lint": "tslint \"src/**/*\" --project tsconfig.json",
+    "format": "npm run prettier -- README.md \"src/**/*.{js,jsx,ts,tsx}\"",
+    "build": "rimraf dist/ dist.es2015/ && tsc && tsc -P tsconfig.es2015.json",
+    "specs": "jest --coverage",
+    "test": "npm run build && npm run lint && npm run specs && npm run size",
+    "size": "size-limit",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BorderlessLabs/atoms.git"
+  },
+  "keywords": [
+    "css",
+    "tailwind",
+    "atomic",
+    "styles"
+  ],
+  "author": "Blake Embrey <hello@blakeembrey.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BorderlessLabs/atoms/issues"
+  },
+  "homepage": "https://github.com/BorderlessLabs/atoms",
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "4 kB"
+    }
+  ],
+  "jest": {
+    "roots": [
+      "<rootDir>/src/"
+    ],
+    "transform": {
+      "\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,md}": [
+      "npm run prettier",
+      "git add"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^2.1.6",
+    "@types/jest": "^24.0.11",
+    "@types/react": "^16.7.5",
+    "@types/react-color": "^3.0.1",
+    "@types/react-dom": "^16.0.9",
+    "husky": "^3.0.5",
+    "jest": "^24.0.0",
+    "lint-staged": "^9.3.0",
+    "prettier": "^1.15.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-free-style": "^10.0.2",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.1.0",
+    "ts-loader": "^6.1.2",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.16.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.6.3"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-free-style": "^10.0.0"
+  }
+}
