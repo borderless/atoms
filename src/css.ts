@@ -299,7 +299,9 @@ export const boxShadow = map(boxShadowConfig, (boxShadow, key) =>
 
 export const outlineNone = css({ outline: 0 }, "outlineNone");
 
-export const fillCurrent = css({ fill: "currentColor" }, "fillCurrent");
+export const fill = map(colorConfig, (fill, key) =>
+  css({ fill }, `fill.${key}`)
+);
 
 export const backgroundFixed = css(
   { backgroundAttachment: "fixed" },
