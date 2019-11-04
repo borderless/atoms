@@ -88,6 +88,7 @@ export const boxShadowConfig = {
 export const colorConfig = {
   black: "#000",
   white: "#fff",
+  current: "currentColor",
   transparent: "transparent",
   gray1: "#F7FAFC",
   gray2: "#EDF2F7",
