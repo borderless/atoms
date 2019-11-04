@@ -16,8 +16,14 @@ export const animationName = (styles: Css) => {
  */
 export const nest =
   process.env.NODE_ENV === "production"
-    ? (rule: string) => (styles: Css): Css => ({ [rule]: styles })
-    : (rule: string, $displayName: string) => (styles: Css): Css => ({
-        [rule]: styles,
-        $displayName: `${$displayName}(${styles.$displayName || "style"})`
-      });
+    ? (rule: string) => (...styles: Css[]): Css[] => {
+        return styles.map(style => ({ [rule]: style }));
+      }
+    : (rule: string, $displayName: string) => {
+        const format = (style: Css): Css => ({
+          $displayName: `${$displayName}(${style.$displayName || "style"})`,
+          [rule]: style
+        });
+
+        return (...styles: Css[]): Css[] => styles.map(format);
+      };

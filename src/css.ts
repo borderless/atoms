@@ -31,13 +31,15 @@ export const floatLeft = css({ float: "left" }, "floatLeft");
 export const floatRight = css({ float: "right" }, "floatRight");
 export const floatNone = css({ float: "none" }, "floatNone");
 
-export const clearFix = css(
-  pseudoAfter({
-    content: '""',
-    display: "table",
-    clear: "both"
-  }),
-  "clearFix"
+export const clearFix = pseudoAfter(
+  css(
+    {
+      content: '""',
+      display: "table",
+      clear: "both"
+    },
+    "clearFix"
+  )
 );
 
 export const block = css({ display: "block" }, "block");
