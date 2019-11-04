@@ -390,3 +390,60 @@ export const backgroundPadding = css(
   { backgroundClip: "padding-box" },
   "backgroundPadding"
 );
+
+export const cursorAuto = css({ cursor: "auto" }, "cursorAuto");
+export const cursorDefault = css({ cursor: "default" }, "cursorDefault");
+export const cursorPointer = css({ cursor: "pointer" }, "cursorPointer");
+export const cursorWait = css({ cursor: "wait" }, "cursorWait");
+export const cursorText = css({ cursor: "text" }, "cursorText");
+export const cursorMove = css({ cursor: "move" }, "cursorMove");
+export const cursorNotAllowed = css(
+  { cursor: "not-allowed" },
+  "cursorNotAllowed"
+);
+
+export const opacity100 = css({ opacity: 1 }, "opacity100");
+export const opacity75 = css({ opacity: 0.75 }, "opacity75");
+export const opacity50 = css({ opacity: 0.5 }, "opacity50");
+export const opacity25 = css({ opacity: 0.25 }, "opacity25");
+export const opacity0 = css({ opacity: 0 }, "opacity0");
+
+export const whitespaceNormal = css(
+  { whiteSpace: "normal" },
+  "whitespaceNormal"
+);
+export const whitespaceNoWrap = css(
+  { whiteSpace: "nowrap" },
+  "whitespaceNoWrap"
+);
+export const whitespacePre = css({ whiteSpace: "pre" }, "whitespacePre");
+export const whitespacePreLine = css(
+  { whiteSpace: "pre-line" },
+  "whitespacePreLine"
+);
+export const whitespacePreWrap = css(
+  { whiteSpace: "pre-wrap" },
+  "whitespacePreWrap"
+);
+
+export const alignBaseline = css(
+  { verticalAlign: "baseline" },
+  "alignBaseline"
+);
+export const alignTop = css({ verticalAlign: "top" }, "alignTop");
+export const alignMiddle = css({ verticalAlign: "middle" }, "alignMiddle");
+export const alignBottom = css({ verticalAlign: "bottom" }, "alignBottom");
+export const alignTextTop = css({ verticalAlign: "text-top" }, "alignTextTop");
+export const alignTextBottom = css(
+  { verticalAlign: "text-bottom" },
+  "alignTextBottom"
+);
+
+export const borderCollapse = css(
+  { borderCollapse: "collapse" },
+  "borderCollapse"
+);
+export const borderSeparate = css(
+  { borderCollapse: "separate" },
+  "borderSeparate"
+);
