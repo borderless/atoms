@@ -11,19 +11,29 @@ export const animationName = (styles: Css) => {
   });
 };
 
+export type NestedCss = Css | NestedCss[];
+
 /**
  * Create a nested CSS rule with `$displayName` propagation.
  */
 export const nest =
   process.env.NODE_ENV === "production"
-    ? (rule: string) => (...styles: Css[]): Css[] => {
-        return styles.map(style => ({ [rule]: style }));
+    ? (rule: string) => {
+        const format = (style: NestedCss): NestedCss => {
+          return Array.isArray(style) ? format(style) : { [rule]: style };
+        };
+
+        return (...styles: NestedCss[]): NestedCss[] => styles.map(format);
       }
     : (rule: string, $displayName: string) => {
-        const format = (style: Css): Css => ({
-          $displayName: `${$displayName}(${style.$displayName || "style"})`,
-          [rule]: style
-        });
+        const format = (style: NestedCss): NestedCss =>
+          Array.isArray(style)
+            ? style.map(format)
+            : {
+                $displayName: `${$displayName}(${style.$displayName ||
+                  "style"})`,
+                [rule]: style
+              };
 
-        return (...styles: Css[]): Css[] => styles.map(format);
+        return (...styles: NestedCss[]): NestedCss[] => styles.map(format);
       };
