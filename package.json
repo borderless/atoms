@@ -75,12 +75,12 @@
     "access": "public"
   },
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^2.1.6",
+    "@size-limit/preset-small-lib": "^3.0.0",
     "@types/jest": "^24.0.11",
     "@types/react": "^16.7.5",
     "@types/react-color": "^3.0.1",
     "@types/react-dom": "^16.0.9",
-    "husky": "^3.0.5",
+    "husky": "^4.0.1",
     "jest": "^24.0.0",
     "lint-staged": "^9.3.0",
     "prettier": "^1.15.2",
@@ -92,7 +92,7 @@
     "ts-loader": "^6.1.2",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.16.0",
-    "tslint-config-standard": "^8.0.1",
+    "tslint-config-standard": "^9.0.0",
     "typescript": "^3.7.2"
   },
   "dependencies": {
