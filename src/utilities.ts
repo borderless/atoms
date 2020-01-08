@@ -5,14 +5,7 @@ import { PropertiesFallback } from "csstype";
  */
 export interface Css extends PropertiesFallback<string | number> {
   $displayName?: string;
-  [selector: string]:
-    | undefined
-    | null
-    | boolean
-    | string
-    | number
-    | (boolean | string | number)[]
-    | Css;
+  [selector: string]: string | number | (string | number)[] | Css | undefined;
 }
 
 /**
