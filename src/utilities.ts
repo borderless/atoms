@@ -1,16 +1,23 @@
-import { css, Css } from "react-free-style";
+import { PropertiesFallback } from "csstype";
 
 /**
- * Create an animation and return as an atomic CSS object (`{ animationName }`).
+ * The CSS type with `$displayName` support.
  */
-export const animationName = (styles: Css) => {
-  return css(Style => {
-    const animationName = Style.registerKeyframes(styles);
+export interface Css extends PropertiesFallback<string | number> {
+  $displayName?: string;
+  [selector: string]:
+    | undefined
+    | null
+    | boolean
+    | string
+    | number
+    | (boolean | string | number)[]
+    | Css;
+}
 
-    return { animationName };
-  });
-};
-
+/**
+ * Support re-usable CSS via arrays of CSS objects.
+ */
 export type NestedCss = Css | NestedCss[];
 
 /**

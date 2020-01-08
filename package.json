@@ -95,8 +95,7 @@
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.7.2"
   },
-  "peerDependencies": {
-    "react": "*",
-    "react-free-style": "^10.0.0"
+  "dependencies": {
+    "csstype": "^2.6.8"
   }
 }

@@ -1,4 +1,4 @@
-import { Css } from "react-free-style";
+import { Css } from "./utilities";
 import {
   spacingConfig,
   colorConfig,
@@ -25,7 +25,7 @@ const map = <K extends PropertyKey, T, U>(
 const css =
   process.env.NODE_ENV === "production"
     ? (style: Css) => style
-    : (style: Css, $displayName: string) => ({ ...style, $displayName });
+    : (style: Css, $displayName: string): Css => ({ ...style, $displayName });
 
 export const floatLeft = css({ float: "left" }, "floatLeft");
 export const floatRight = css({ float: "right" }, "floatRight");
