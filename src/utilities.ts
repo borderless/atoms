@@ -20,7 +20,7 @@ export const nest =
   process.env.NODE_ENV === "production"
     ? (rule: string) => {
         const format = (style: NestedCss): NestedCss => {
-          return Array.isArray(style) ? format(style) : { [rule]: style };
+          return Array.isArray(style) ? style.map(format) : { [rule]: style };
         };
 
         return (...styles: NestedCss[]): NestedCss[] => styles.map(format);
