@@ -1,9 +1,8 @@
-import { PropertiesFallback } from "csstype";
-
 /**
  * The CSS type with `$displayName` support.
  */
-export interface Css extends PropertiesFallback<string | number> {
+export interface Css {
+  $global?: boolean;
   $displayName?: string;
   [selector: string]:
     | boolean
@@ -25,21 +24,24 @@ export type NestedCss = Css | NestedCss[];
  */
 export const nest =
   process.env.NODE_ENV === "production"
-    ? (rule: string) => {
+    ? (rule: string, $displayName: string, $global?: boolean) => {
         const format = (style: NestedCss): NestedCss => {
-          return Array.isArray(style) ? style.map(format) : { [rule]: style };
+          if (Array.isArray(style)) return style.map(format);
+          return { $global, [rule]: style };
         };
 
         return (...styles: NestedCss[]): NestedCss[] => styles.map(format);
       }
-    : (rule: string, $displayName: string) => {
+    : (rule: string, $displayName: string, $global?: boolean) => {
         const format = (style: NestedCss): NestedCss =>
           Array.isArray(style)
             ? style.map(format)
             : {
-                $displayName: `${$displayName}(${style.$displayName ||
-                  "style"})`,
-                [rule]: style
+                $global,
+                $displayName: `${$displayName}(${
+                  style.$displayName || "style"
+                })`,
+                [rule]: style,
               };
 
         return (...styles: NestedCss[]): NestedCss[] => styles.map(format);
